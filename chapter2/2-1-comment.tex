@@ -55,5 +55,16 @@
     & = \delta_k + \rho_k(S_k / S_{k + 1}) (1 + \delta_k)
   \end{align*}
 
+\begin{zremark}
+  例3中“小数点后面第m个位是正确的”数学定义（绝对误差限与精确到小数点后$m$位））：
+
+  近似值$\tilde{x}$精确到小数点后第$m$位（或说第$m$位小数是正确的），如果其绝对误差
+  \begin{align*}
+    |x - \tilde{x}| < 0.5 \times 10^{-m}
+  \end{align*}
+  此处$x$是精确值。这意味着如果我们要把精确值$x$\textbf{四舍五入}到小数点后$m$位，结果必定与
+  $\tilde{x}$\textbf{四舍五入}到小数点后$m$位一致。
+\end{zremark}
+
 
 \end{document}
