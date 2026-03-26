@@ -36,40 +36,36 @@
 \author{张志聪}
 \maketitle
 
-% \begin{zremark}
-%   1.3.2 定理1（零空间定理）的证明中：
-%   \begin{align*}
-%     \left(\sum\limits_{i = 0}^m c_i E^i\right) u 
-%     = \sum\limits_{i = 0}^m c_i (E^iu) 
-%     = \sum\limits_{i = 0}^m c_i \lambda^i u
-%     = p(\lambda) u
-%   \end{align*}
-%   每一步具体是如何得到。
-% \end{zremark}
+\begin{zremark}
+  线性空间$V$上的向量范数$\| \cdot \|$是连续函数。
+\end{zremark}
 
-% \textbf{证明：}
+由向量范数的三角不等式可得反三角不等式
+\begin{align*}
+  \big| \|x\| - \|y\| \big| \leq \| x - y \|
+\end{align*}
+具体推导过程为：
+\begin{align*}
+  \| x \| = \| x - y + y\| & \leq \| x - y \| + \| y \| \\
+  \| x \| - \| y \|        & \leq \| x - y \|
+\end{align*}
+同理可得
+\begin{align*}
+  \| y \| - \| x \| & \leq \| y - x \|        \\
+                    & \leq \| (-1) (x - y) \| \\
+                    & \leq |- 1|\| (x - y) \| \\
+                    & = \| x - y \|
+\end{align*}
+综上，$\big| \|x\| - \|y\| \big| \leq \| x - y \|$.
 
-% \begin{align*}
-%     \left(\sum\limits_{i = 0}^m c_i E^i\right) u 
-%     = \sum\limits_{i = 0}^m c_i (E^i u) 
-% \end{align*}
-% 这一步的展开方式，完全是数学定义规定的，只是书中没有提而已;
+对$x_0 \in V$，对任意$\epsilon > 0$，只要$\|x - x_0\| < \delta < \epsilon$，
+于是可得
+\begin{align*}
+  \big| \|x\| - \|x_0\| \big| \leq \| x - x_0 \| < \delta < \epsilon
+\end{align*}
+所以$\|\cdot\|$在$x_0$处连续。
 
-% \begin{align*}
-%   \sum\limits_{i = 0}^m c_i (E^iu) 
-%   = \sum\limits_{i = 0}^m c_i \lambda^i u
-% \end{align*}
-% 书中有说明理由；
-
-% \begin{align*}
-%   \sum\limits_{i = 0}^m c_i \lambda^i u
-%   = p(\lambda) u
-% \end{align*}
-% 这一步是高等代数中“向量的数乘 + 加法的运算规则”的运用。
-
-% \begin{zremark}
-%   谱定理的证明。
-% \end{zremark}
+由$x_0$的任意性可知，$\|\cdot\|$在$V$上连续。
 
 \begin{zremark}
   矩阵范数$\|\cdot\|_F$满足相容性，其中$A = (a_{ij})$是$n$阶矩阵。
@@ -84,18 +80,92 @@
 我们有
 \begin{align*}
   \|A B\|_F
-  & = \left(\sum \limits_{i = 1}^m \sum \limits_{j = 1}^n |a_{i1}b_{1j} + a_{i2}b_{2j} + \cdots + a_{il}b_{lj}|^2 \right)^{\frac{1}{2}} \\
-  & \leq \left(\sum \limits_{i = 1}^m \sum \limits_{j = 1}^n (|a_{i1}b_{1j}| + |a_{i2}b_{2j}| + \cdots + |a_{il}b_{lj}|)^2 \right)^{\frac{1}{2}} 
+   & = \left(\sum \limits_{i = 1}^m \sum \limits_{j = 1}^n |a_{i1}b_{1j} + a_{i2}b_{2j} + \cdots + a_{il}b_{lj}|^2 \right)^{\frac{1}{2}}          \\
+   & \leq \left(\sum \limits_{i = 1}^m \sum \limits_{j = 1}^n (|a_{i1}b_{1j}| + |a_{i2}b_{2j}| + \cdots + |a_{il}b_{lj}|)^2 \right)^{\frac{1}{2}}
 \end{align*}
 利用柯西-施瓦茨不等式，我们有
 \begin{align*}
-  & \left(\sum \limits_{i = 1}^m \sum \limits_{j = 1}^n (|a_{i1}b_{1j}| + |a_{i2}b_{2j}| + \cdots + |a_{il}b_{lj}|)^2 \right)^{\frac{1}{2}} \\
-  & \leq \left(\sum \limits_{i = 1}^m \sum \limits_{j = 1}^n (|a_{i1}|^2 + |a_{i2}|^2 + \cdots + |a_{il}|^2)(|b_{1j}|^2 + |b_{2j}|^2 + \cdots + |b_{lj}|^2) \right)^{\frac{1}{2}} \\
-  & = \left(\sum \limits_{i = 1}^m \sum \limits_{k = 1}^l |a_{ik}|^2\right)^{\frac{1}{2}} \left(\sum \limits_{k = 1}^l \sum \limits_{j = 1}^n |b_{kj}|^2\right)^{\frac{1}{2}} \\
-  & = \|A\|_F \|B\|_F
+   & \left(\sum \limits_{i = 1}^m \sum \limits_{j = 1}^n (|a_{i1}b_{1j}| + |a_{i2}b_{2j}| + \cdots + |a_{il}b_{lj}|)^2 \right)^{\frac{1}{2}}                                       \\
+   & \leq \left(\sum \limits_{i = 1}^m \sum \limits_{j = 1}^n (|a_{i1}|^2 + |a_{i2}|^2 + \cdots + |a_{il}|^2)(|b_{1j}|^2 + |b_{2j}|^2 + \cdots + |b_{lj}|^2) \right)^{\frac{1}{2}} \\
+   & = \left(\sum \limits_{i = 1}^m \sum \limits_{k = 1}^l |a_{ik}|^2\right)^{\frac{1}{2}} \left(\sum \limits_{k = 1}^l \sum \limits_{j = 1}^n |b_{kj}|^2\right)^{\frac{1}{2}}     \\
+   & = \|A\|_F \|B\|_F
 \end{align*}
 命题得证。
 
+\begin{zremark}
+  如果矩阵$U$是酉矩阵，即$U^{*} U = U U^{*} = E$，则有$\|UA\|_F = \|A\|_F$.
+\end{zremark}
+\textbf{证明：}
+\begin{align*}
+  (\|UA\|_F)^2
+   & = \sum\limits_{i = 1}^n \sum\limits_{j = 1}^n |a_{ij}|^2 \\
+   & = trace((UA)^{*} UA)                                     \\
+   & = trace(A^* U^* UA)                                      \\
+   & = trace(A^* E A)                                         \\
+   & = trace(A^* A)                                           \\
+   & = \|A\|_F^2
+\end{align*}
 
+\begin{zremark}
+  算子范数
+  $\max\limits_{x \neq 0} \frac{\|Ax\|_V}{\|x\|_V} = \max\limits_{\|x\|_V = 1} \|A x\|_V$
+  为什么成立？
+\end{zremark}
+
+\textbf{证明：}
+
+首先，对任意$x \neq 0$，令
+\begin{align*}
+  u = \frac{x}{\|x\|_V}
+\end{align*}
+利用范数的性质，有
+\begin{align*}
+  \|u\|_V
+   & = \|\frac{x}{\|x\|_V}\|     \\
+   & = \frac{1}{\|x\|_V} \|x\|_V \\
+   & = 1
+\end{align*}
+于是
+\begin{align*}
+  \frac{\|Ax\|_V}{\|x\|_V}
+   & = \frac{\big\|A u \|x\|_V \big\|_V}{\|x\|_V} \\
+   & = \frac{\|x\|_V \big\| A u\big\|_V}{\|x\|_V} \\
+   & = \big\| A u\big\|_V
+\end{align*}
+综上，对任意$x \neq 0$，都存在一个单位向量$u$使得:
+\begin{align*}
+  \frac{\|Ax\|_V}{\|x\|_V} = \big\| A u\big\|_V
+\end{align*}
+即$\frac{\|Ax\|_V}{\|x\|_V}$属于右边集合元素。
+
+反过来：
+若$\|u\|_V = 1$，则
+\begin{align*}
+  \big\| A u\big\|_V & = \frac{\|Au\|_V}{\|u\|_V}
+\end{align*}
+所以，$\big\| A u\big\|_V$属于左边集合元素。
+
+综上，左右集合相同，故最大值相等。
+
+\begin{zremark}
+  在 2-范数下，对称矩阵的算子范数等于谱半径.
+\end{zremark}
+
+\textbf{证明：}
+
+任意对称矩阵$A$（即$A^T = A$），有
+\begin{align*}
+  \| A \|_2
+   & = \sqrt{\lambda_{max}A^T A} \\
+   & = \sqrt{\lambda_{max}A^2}
+\end{align*}
+接下来证明，$A^2$的特征值就是$A$的特征值的平方.
+
+设$\lambda$是$A$的特征值，$\epsilon$是对应的特征向量。
+
+先证明$\lambda^2$是$A^2$的特征值：
+\begin{align*}
+  A^2 \epsilon = A (A \epsilon) = A (\lambda \epsilon) = \lambda (A \epsilon) = \lambda^2 \epsilon
+\end{align*}
 
 \end{document}
