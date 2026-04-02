@@ -39,21 +39,21 @@
 \begin{zremark}
   定理1（加法的相对舍入误差定理） 证明过程中
   \begin{align*}
-    & \{[S_k(1 + \rho_k) + x_{k + 1}](1 + \delta_k) - (S_k + x_{k + 1})\} / S_{k + 1} \\
-    & = \delta_k + \rho_k(S_k / S_{k + 1}) (1 + \delta_k)
+     & \{[S_k(1 + \rho_k) + x_{k + 1}](1 + \delta_k) - (S_k + x_{k + 1})\} / S_{k + 1} \\
+     & = \delta_k + \rho_k(S_k / S_{k + 1}) (1 + \delta_k)
   \end{align*}
 \end{zremark}
 
 \textbf{证明：}
-  \begin{align*}
-    & \{[S_k(1 + \rho_k) + x_{k + 1}](1 + \delta_k) - (S_k + x_{k + 1})\} / S_{k + 1} \\
-    & = \{ (S_k + S_k \rho_k + x_{k + 1}) (1 + \delta_k) - S_k - x_{k + 1} \} / S_{k + 1} \\
-    & = \{ S_k + S_k \rho_k + x_{k + 1} + S_k \delta_k + S_k \rho_k \delta_k + x_{k + 1} \delta_k - S_k - x_{k + 1} \} / S_{k + 1} \\
-    & = \{ S_k \rho_k + S_k \delta_k + S_k \rho_k \delta_k + x_{k + 1} \delta_k \} / S_{k + 1} \\
-    & = \{ \delta_k(S_k + x_{k + 1}) + \rho_k S_k  ( 1 + \delta_k) \} / S_{k + 1} \\
-    & = \{ \delta_k S_{k+1} + \rho_k S_k  ( 1 + \delta_k) \} / S_{k + 1} \\
-    & = \delta_k + \rho_k(S_k / S_{k + 1}) (1 + \delta_k)
-  \end{align*}
+\begin{align*}
+   & \{[S_k(1 + \rho_k) + x_{k + 1}](1 + \delta_k) - (S_k + x_{k + 1})\} / S_{k + 1}                                              \\
+   & = \{ (S_k + S_k \rho_k + x_{k + 1}) (1 + \delta_k) - S_k - x_{k + 1} \} / S_{k + 1}                                          \\
+   & = \{ S_k + S_k \rho_k + x_{k + 1} + S_k \delta_k + S_k \rho_k \delta_k + x_{k + 1} \delta_k - S_k - x_{k + 1} \} / S_{k + 1} \\
+   & = \{ S_k \rho_k + S_k \delta_k + S_k \rho_k \delta_k + x_{k + 1} \delta_k \} / S_{k + 1}                                     \\
+   & = \{ \delta_k(S_k + x_{k + 1}) + \rho_k S_k  ( 1 + \delta_k) \} / S_{k + 1}                                                  \\
+   & = \{ \delta_k S_{k+1} + \rho_k S_k  ( 1 + \delta_k) \} / S_{k + 1}                                                           \\
+   & = \delta_k + \rho_k(S_k / S_{k + 1}) (1 + \delta_k)
+\end{align*}
 
 \begin{zremark}
   例3中“小数点后面第m个位是正确的”数学定义（绝对误差限与精确到小数点后$m$位））：
@@ -66,5 +66,43 @@
   $\tilde{x}$\textbf{四舍五入}到小数点后$m$位一致。
 \end{zremark}
 
+\begin{zremark}
+  函数计算时，对自变量误差的传导问题。
+\end{zremark}
+
+\begin{zremark}
+  定理. 设$A$为n阶方阵，则存在n阶酉阵U和V，使得
+  \begin{align*}
+    \|UA\|_F = \|A V\|_F = \|UAV\|_F = \|A\|_F
+  \end{align*}
+  ，称为$F-$范数的酉不变性。
+\end{zremark}
+\textbf{证明：}
+
+我们有
+\begin{align*}
+  \|A\|_F^2 = \sum\limits_{i = 1}^m \sum\limits_{j = 1}^n |a_{ij}|^2 = trace(A^H A)
+\end{align*}
+故
+\begin{align*}
+  \|UA\|_F
+   & = trace((UA)^H UA )  \\
+   & = trace(A^H U^H U A) \\
+   & = trace(A^H  A)      \\
+   & = \|A\|_F
+\end{align*}
+同理
+\begin{align*}
+  \|A V\|_F
+   & = trace((A V)^H (A V)) \\
+   & = trace(A V (A V)^H)   \\
+   & = trace(A V V^H A^H)   \\
+   & = trace(A  A^H)        \\
+   & = \|A\|_F
+\end{align*}
+最后,
+\begin{align*}
+  \|UAV\|_F & = \| AV\|_F = \|A\|_F
+\end{align*}
 
 \end{document}

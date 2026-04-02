@@ -1,5 +1,5 @@
 # 内容
-数值分析：基于Mooc视频：https://www.icourse163.org/course/DUT-1206215811?tid=1470339445
+《计算机科学计算-第二版》张宏伟
 
 latex 项目, 使用 XeLaTeX 编译。
 
