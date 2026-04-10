@@ -1,0 +1,126 @@
+\documentclass{article}
+\usepackage{mathtools} 
+\usepackage{fontspec}
+\usepackage[UTF8]{ctex}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+% 定义新的带灰色背景的说明环境 zremark
+\newmdtheoremenv[
+  backgroundcolor=gray!10,
+  % 边框与背景一致，边框线会消失
+  linecolor=gray!10
+]{zremark}{说明}
+
+% 通用矩阵命令: \flexmatrix{矩阵名}{元素符号}{行数}{列数}
+\newcommand{\flexmatrix}[4]{
+  \[
+  #1 = \begin{pmatrix}
+    #2_{11}     & #2_{12}     & \cdots & #2_{1#4}   \\
+    #2_{21}     & #2_{22}     & \cdots & #2_{2#4}   \\
+    \vdots      & \vdots      & \ddots & \vdots     \\
+    #2_{#31}    & #2_{#32}    & \cdots & #2_{#3#4}
+  \end{pmatrix}
+  \]
+}
+
+% 简化版命令（默认矩阵名为A，元素符号为a）: \quickmatrix{行数}{列数}
+\newcommand{\quickmatrix}[2]{\flexmatrix{A}{a}{#1}{#2}}
+
+\begin{document}
+\title{3.1}
+\author{张志聪}
+\maketitle
+
+\begin{zremark}
+  设$\{A_k\}_{k = 1}^{\infty} \in \mathbb{C}^{n \times n}$中的矩阵序列，
+  即$\lim\limits_{k \to \infty} A_k = A$，
+  则
+  \begin{itemize}
+    \item (1) $\lim\limits_{k \to \infty} det(A_k) = det(A)$;
+    \item (2) $\lim\limits_{k \to \infty} A_k^{*} = A^{*}$，其中$A_k^{*}, A^{*}$是
+          $A_k, A$的伴随矩阵.
+  \end{itemize}
+\end{zremark}
+
+\textbf{证明：}
+\begin{itemize}
+  \item (1) 设$A_k = (a_{ij}^{(k)}), A = (a_{ij})$，由$A_k \to A$可得
+        \begin{align*}
+          \lim\limits_{k \to \infty} a_{ij}^{(k)} = a_{ij}
+        \end{align*}
+
+        通过对$n$进行归纳，我们来完成证明。
+
+        $n = 1$时，$det(A_k) = a_{11}^{(k)}$结论是显然的;
+
+        归纳假设$n - 1$时，命题成立;
+
+        现在需要证明$n$时，命题成立。对$A_k$第一行进行展开，我们有
+        \begin{align*}
+          det(A_k)
+           & = \sum\limits_{j = 1}^n a_{1j}^{(k)} C_{1j}^{(k)}
+        \end{align*}
+        其中$C_{1j}^{(k)} = (-1)^{1 + j} M_{1j}^{(k)}$，
+        $M_{1j}^{(k)}$是$n - 1$阶方阵的余子式。
+
+        由$A_k \to A$，我们有
+        \begin{align*}
+          a_{1j}^{(k)} \to a_{1j}
+        \end{align*}
+        由归纳假设可知，
+        \begin{align*}
+          M_{1j}^{(k)} \to M_{1j}
+        \end{align*}
+        故
+        \begin{align*}
+          \sum\limits_{j = 1}^n a_{1j}^{(k)} C_{1j}^{(k)} = det(A)
+        \end{align*}
+        归纳完成，命题得证。
+  \item (2) 可以类似的归纳证明。
+\end{itemize}
+
+\begin{zremark}
+  例3的补充
+  \begin{align*}
+    \left\| (I - A)^{-1} - \sum\limits_{k=0}^m A^k \right\|
+     & = \left\| \sum\limits_{k=0}^\infty A^k - \sum\limits_{k=0}^m A^k \right\| \\
+     & = \left\| \sum\limits_{k=m + 1}^\infty A^k\right\|                        \\
+     & \leq \sum\limits_{k=m + 1}^\infty \| A \|^k                               \\
+     & = \frac{\|A\|^{m + 1}}{1 - \|A\|}
+  \end{align*}
+  注意：$\|A\| < 1$才成立。
+\end{zremark}
+
+\begin{zremark}
+  证明：
+
+  (I) $\forall A \in \mathbb{C}^{n \times n}$，总有
+  \begin{itemize}
+    \item (1) $sin (-A) = -sin A, cos(-A) = cos A$;
+  \end{itemize}
+\end{zremark}
+
+\textbf{证明：}
+\begin{align*}
+  - sin A
+   & = - \sum\limits_{k = 0}^\infty \frac{(-1)^k A^{2k + 1}}{(2k + 1)!}   \\
+   & = \sum\limits_{k = 0}^\infty \frac{(-1)^{k+1} A^{2k + 1}}{(2k + 1)!} \\
+\end{align*}
+又
+\begin{align*}
+  sin (-A)
+   & = \sum\limits_{k = 0}^\infty \frac{(-1)^k (-A)^{2k + 1}}{(2k + 1)!}           \\
+   & = \sum\limits_{k = 0}^\infty \frac{(-1)^k (-1)^{2k + 1}A^{2k + 1}}{(2k + 1)!} \\
+   & = \sum\limits_{k = 0}^\infty \frac{(-1)^{k + 1}A^{2k + 1}}{(2k + 1)!}         
+\end{align*}
+故
+\begin{align*}
+  -sin A = sin (-A)
+\end{align*}
+
+\end{document}
